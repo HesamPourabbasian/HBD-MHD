@@ -137,10 +137,10 @@
               <div ref="cakeRef" class="mt-2 sm:mt-4">
                 <!-- Cake image (replace URL with your own if you like) -->
                 <img
-                  class="w-40 md:w-56 rounded-2xl border border-[#bba98c]
+                  class="w-30  rounded-2xl border border-[#bba98c]
                          vintage-photo
                          shadow-[0_18px_28px_rgba(0,0,0,0.5)]"
-                  src="https://images.pexels.com/photos/207962/pexels-photo-207962.png?auto=compress&cs=tinysrgb&w=800"
+                  src="/cake.png"
                   alt="Birthday cake"
                 />
               </div>
