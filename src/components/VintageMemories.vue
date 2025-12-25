@@ -1,129 +1,122 @@
-<!-- VintageMemories.vue -->
+<!-- VintageMemories.vue — Parisian 60s Fashion Editorial -->
 <template>
-  <div class="relative min-h-screen w-full bg-[#f5ecd8] text-[#2b2116]">
-    <!-- Paper grain texture -->
+  <div class="relative min-h-screen w-full bg-[#faf6ef] text-[#1f1b16] overflow-hidden">
+    <!-- Paper grain -->
     <div
-      class="pointer-events-none absolute inset-0 opacity-30 mix-blend-multiply"
+      class="pointer-events-none absolute inset-0 opacity-20 mix-blend-multiply"
       style="
-        background-image: radial-gradient(#000000 0.5px, transparent 0.5px);
-        background-size: 4px 4px;
+        background-image: radial-gradient(#000000 0.4px, transparent 0.4px);
+        background-size: 5px 5px;
       "
     ></div>
 
-    <!-- Subtle vignette -->
+    <!-- Vignette -->
     <div
       class="pointer-events-none absolute inset-0"
       style="
         background: radial-gradient(
           circle at center,
-          rgba(0, 0, 0, 0) 0,
-          rgba(0, 0, 0, 0) 45%,
-          rgba(0, 0, 0, 0.18) 100%
+          rgba(0,0,0,0) 50%,
+          rgba(0,0,0,0.25) 100%
         );
       "
     ></div>
 
-    <div class="relative z-10 flex items-center justify-center min-h-screen px-4">
-      <div
-        class="w-full max-w-5xl border border-[#bba98c] bg-[#f9f0dd]/95
-               shadow-xl shadow-black/20"
-      >
-        <!-- Newspaper-style header -->
-        <header
-          class="border-b border-[#bba98c] px-4 sm:px-10 py-4
-                 flex flex-col items-center space-y-1"
-        >
+    <div class="relative z-10 flex items-center justify-center px-4 py-16 sm:py-24">
+      <div class="w-full max-w-5xl bg-[#fffaf2] shadow-[0_40px_80px_rgba(0,0,0,0.25)]">
+        <!-- Masthead -->
+        <header class="px-6 sm:px-16 pt-10 pb-8 text-center">
           <p
-            class="text-xs sm:text-sm tracking-[0.25em] uppercase
-                   text-[#7b6950] font-body"
+            class="text-[10px] sm:text-[11px] tracking-[0.4em] uppercase
+                   text-[#8a7d6a] font-body"
           >
-            Cahier des souvenirs · Paris — 1960
+            Cahier personnel · Paris · 1963
           </p>
+
           <h1
-            class="font-headline text-2xl sm:text-3xl tracking-[0.35em]
-                   uppercase text-[#2b2116] text-center"
+            class="mt-3 font-headline text-3xl sm:text-4xl md:text-5xl
+                   tracking-[0.18em] uppercase"
           >
             Les Moments de Mahshid
           </h1>
+
+          <div class="mt-5 h-[1px] w-24 mx-auto bg-black/60"></div>
         </header>
 
-        <!-- Content -->
-        <main class="px-4 sm:px-10 py-6 sm:py-10 space-y-6 sm:space-y-8">
+        <!-- Editorial content -->
+        <main class="px-6 sm:px-16 py-10 sm:py-14 space-y-12 sm:space-y-16">
           <article
             v-for="(memory, index) in memories"
             :key="index"
-            class="border-b border-[#d1c4a3] last:border-b-0 pb-6 sm:pb-8"
+            class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start"
           >
+            <!-- Editorial photo -->
             <div
-              class="flex flex-col sm:flex-row gap-5 sm:gap-8 items-start sm:items-stretch"
+              class="md:col-span-4 flex justify-center md:justify-start"
             >
-              <!-- Polaroid photo area -->
               <div
-                class="relative w-full sm:w-1/3 max-w-xs mx-auto sm:mx-0
-                       bg-[#fdfaf3] border border-[#d1c4a3]
-                       shadow-[4px_4px_0_rgba(0,0,0,0.55)]
-                       px-4 pt-4 pb-6
-                       transform origin-center"
-                :class="index % 2 === 0 ? 'rotate-1' : '-rotate-2'"
+                class="relative w-full max-w-[240px] bg-[#fdfaf3]
+                       shadow-[0_20px_40px_rgba(0,0,0,0.45)]
+                       px-4 pt-4 pb-6"
+                :class="index % 2 === 0 ? 'rotate-1' : '-rotate-1'"
               >
                 <div
-                  class="aspect-[3/4] w-full bg-[#e5d8bf]
-                         flex items-center justify-center overflow-hidden"
+                  class="aspect-[3/4] w-full bg-[#e5d8bf] overflow-hidden"
                 >
-                  <!-- Replace this placeholder with your own <img> if you like -->
                   <img
-                    v-if="memory.photo"
                     :src="memory.photo"
                     :alt="memory.title"
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover vintage-photo"
                   />
-                  <span
-                    v-else
-                    class="text-[10px] sm:text-xs text-[#7b6950] text-center px-2"
-                  >
-                    Polaroid photo<br />
-                    (place your picture here)
-                  </span>
                 </div>
+
                 <p
-                  class="mt-3 text-[10px] sm:text-xs text-center
-                         text-[#7b6950] font-body"
+                  class="mt-3 text-[9px] sm:text-[10px]
+                         text-center tracking-[0.25em]
+                         uppercase text-[#7b6f5e]"
                 >
                   {{ memory.caption }}
                 </p>
               </div>
+            </div>
 
-              <!-- Description text -->
-              <div class="sm:flex-1 font-body text-sm sm:text-base leading-relaxed">
-                <h2
-                  class="font-headline text-lg sm:text-xl tracking-[0.14em]
-                         uppercase mb-2 text-[#2b2116]"
-                >
-                  {{ memory.title }}
-                </h2>
-                <p class="text-[#4b3b29] mb-2">
-                  {{ memory.text }}
-                </p>
-                <p
-                  v-if="memory.subtext"
-                  class="text-[11px] sm:text-xs text-[#7b6950] uppercase tracking-[0.18em]"
-                >
-                  {{ memory.subtext }}
-                </p>
-              </div>
+            <!-- Editorial text -->
+            <div class="md:col-span-8 font-body">
+              <h2
+                class="font-headline text-xl sm:text-2xl
+                       tracking-[0.14em] uppercase mb-4"
+              >
+                {{ memory.title }}
+              </h2>
+
+              <p
+                class="text-sm sm:text-base text-[#3f372d]
+                       leading-relaxed italic mb-4"
+              >
+                {{ memory.text }}
+              </p>
+
+              <p
+                v-if="memory.subtext"
+                class="text-[10px] sm:text-[11px]
+                       tracking-[0.3em] uppercase
+                       text-[#8a7d6a]"
+              >
+                {{ memory.subtext }}
+              </p>
             </div>
           </article>
         </main>
 
         <!-- Footer -->
         <footer
-          class="border-t border-[#bba98c] px-4 sm:px-10 py-3
-                 flex justify-between items-center
-                 text-[10px] sm:text-xs text-[#7b6950]
-                 font-body uppercase tracking-[0.22em]"
+          class="px-6 sm:px-16 py-6 flex justify-between
+                 text-[9px] sm:text-[10px]
+                 tracking-[0.35em] uppercase
+                 text-[#8a7d6a] font-body"
         >
           <span>Archives personnelles</span>
-          <span>Quatre polaroids précieux</span>
+          <span>Édition limitée</span>
         </footer>
       </div>
     </div>
@@ -133,50 +126,50 @@
 <script setup>
 const memories = [
   {
-    title: 'Chapitre I — Un sourire inoubliable',
-    text: 'Une scène capturée dans un éclat de rire, où le temps semblait s’arrêter juste pour admirer ton sourire.',
-    subtext: 'Rubrique · Joie spontanée',
-    caption: 'Un sourire volé par la pellicule.',
+    title: "Le film *Dead Poets Society* a été le début de tout.",
+    text:
+      "Notre rencontre avec le club de lecture *Dead Poets Society* et notre étonnement à cause de notre anniversaire commun ont été le point de départ.",
+    caption: 'dead poets society 1989',
     photo:
-      'https://images.pexels.com/photos/1441151/pexels-photo-1441151.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/dead.jpg',
   },
   {
-    title: 'Chapitre II — Promenade de fin d’après-midi',
-    text: 'Le soleil se couche doucement, et chaque pas laisse derrière lui une trace de douceur et de nostalgie.',
-    subtext: 'Rubrique · Balades parisiennes',
-    caption: 'La lumière dorée d’un souvenir.',
+    title: 'Ta façon de voir le monde',
+    text:"Ton amour passionné pour la musique et l’art m’a toujours captivé, et la façon dont tu vois le monde colore tout pour moi.De David Bowie jusqu’à ton amour pour le cinéma et la littérature, tout cela fait partie de qualités uniques qu’on trouve rarement dans ce pays.",
+    caption: 'David Bowie',
     photo:
-      'https://images.pexels.com/photos/1443874/pexels-photo-1443874.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/david.jpg',
   },
   {
-    title: 'Chapitre III — Un café, deux cœurs',
-    text: 'Une table, deux tasses, et des conversations qui auraient pu durer toute une vie.',
-    subtext: 'Rubrique · Instants partagés',
-    caption: 'La chaleur d’un café et d’une présence.',
+    title: 'Nous avons vécu notre premier baiser amoureux.',
+    text:
+      'Tout cela a contribué à ce que, dans une forêt brumeuse sous la pluie, nous partagions nos premiers baisers dans les bras l’un de l’autre, transmettant non seulement nos pensées mais aussi la chaleur de nos souffles à nos cœurs.',
     photo:
-      'https://images.pexels.com/photos/1123252/pexels-photo-1123252.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/kiss.png',
   },
   {
-    title: 'Chapitre IV — La nuit, les lumières, toi',
-    text: 'Sous les lumières tamisées, tu brilles plus fort que toutes les enseignes de la ville.',
-    subtext: 'Rubrique · Soirées élégantes',
-    caption: 'La ville en toile de fond, toi au premier plan.',
+    title: 'Et maintenant, nous sommes ici.',
+    text:
+      'Et maintenant, nous sommes ici. Cela fait plus d’un mois que nos mains sont liées. J’espère que nous serons ensemble pendant de nombreuses années et que nous profiterons pleinement de notre chemin de vie et de notre épanouissement.',
+    caption: '2025.25.12',
     photo:
-      'https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&w=800',
+      '/mhd.jpg',
   },
 ]
 </script>
 
 <style>
-/* Reuse same fonts as the other vintage component.
-   If you already imported them globally, you can remove this @import. */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Libre+Baskerville:wght@400;700&display=swap');
 
 .font-headline {
-  font-family: 'Playfair Display', 'Times New Roman', serif;
+  font-family: 'Playfair Display', 'Didot', 'Bodoni MT', serif;
 }
 
 .font-body {
-  font-family: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  font-family: 'Libre Baskerville', Georgia, serif;
+}
+
+.vintage-photo {
+  filter: sepia(0.35) contrast(1.1) saturate(0.9);
 }
 </style>
